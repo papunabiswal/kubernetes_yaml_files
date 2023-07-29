@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: my-volume
+spec:
+  capacity:
+    storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: my-volume
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /common/volume
+    server: 3.80.131.138

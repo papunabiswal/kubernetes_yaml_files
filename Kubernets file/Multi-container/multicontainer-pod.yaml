@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multicontainer-pod
+spec:
+  containers:
+    - name: 1st
+      image: nginx
+      args: ["sleep", "3600"]
+    - name: 2nd
+      image: nginx

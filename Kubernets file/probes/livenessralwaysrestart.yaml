@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: liveness-alwaysrestart
+spec:
+  restartPolicy: Always
+  containers:
+    - name: ubuntu-container
+      image: ubuntu:latest
+      command:
+        - /bin/bash
+        - -ec
+        - touch /tmp/rajesh;sleep 30; rm /tmp/rajesh;sleep 600
+      livenessProbe:
+        exec:
+          command:
+            - cat
+            - /tmp/rajesh
+        initialDelaySeconds: 5
+        periodSeconds: 5
